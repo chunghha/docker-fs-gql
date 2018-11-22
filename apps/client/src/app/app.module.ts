@@ -32,7 +32,7 @@ import { AppComponent } from './app.component';
       return {
         cache: new InMemoryCache(),
         link: httpLink.create({
-          uri: "http://localhost:3333/graphql"
+          uri: "/graphql"
         })
       }
     },
