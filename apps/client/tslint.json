@@ -1,0 +1,7 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [true, "attribute", "docker-fs-gql", "camelCase"],
+    "component-selector": [true, "element", "docker-fs-gql", "kebab-case"]
+  }
+}
