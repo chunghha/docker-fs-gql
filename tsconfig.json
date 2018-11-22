@@ -6,17 +6,21 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "es2017",
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
       "es2017",
+      "esnext.asynciterable",
       "dom"
     ],
     "baseUrl": ".",
     "paths": {
-    }
+      "*": ["node_modules/*", "src/types/*"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
   "exclude": [
     "node_modules",

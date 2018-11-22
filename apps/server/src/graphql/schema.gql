@@ -1,0 +1,72 @@
+# Comments in GraphQL are defined with the hash (#) symbol.
+
+# Bloc type
+type Bloc {
+  acronym: String
+  name: String
+  otherAcronyms: [String]
+  otherNames: [String]
+}
+
+# Currency type
+type Currency {
+    code: String
+    name: String
+    symbol: String
+}
+
+# Language type
+type Language {
+  iso639_1: String
+  iso639_2: String
+  name: String
+  nativeName: String
+}
+
+# Translation type
+type Translation {
+  de: String
+  es: String
+  fr: String
+  ja: String
+  it: String
+  br: String
+  pt: String
+  nl: String
+  hr: String
+  fa: String
+}
+
+# This "Country" type can be used in other type declarations.
+type Country {
+  name: String
+  topLevelDomain: [String]
+  alpha2Code: String
+  alpha3Code: String
+  callingCodes: [String]
+  capital: String
+  altSpellings: [String]
+  region: String
+  subregion: String
+  population: Int
+  latlng: [Float]
+  demonym: String
+  area: Float
+  gini: Float
+  timezones: [String]
+  borders: [String]
+  nativeName: String
+  numericCode: String
+  currencies: [Currency]
+  languages: [Language]
+  translations: Translation
+  reginalBlocs: [Bloc]
+  flag: String
+  cioc: String
+}
+
+# The "Query" type is the root of all GraphQL queries.
+# (A "Mutation" type will be covered later on.)
+type Query {
+    countries: [Country!]!
+}

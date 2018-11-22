@@ -1,20 +1,22 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- **/
+import { ApolloServer } from 'apollo-server-koa';
 
-import * as express from 'express';
+import Koa from 'koa';
 
-const app = express();
+import { CountryAPI } from './datasources/country-datasource';
+import schema from './graphql';
 
-app.get('/', (req, res) => {
-  res.send(`Welcome to server!`);
+const app = new Koa();
+
+const PORT = process.env.PORT || 3333;
+
+const server = new ApolloServer({
+  dataSources: () => ({
+    countryAPI: new CountryAPI()
+  }),
+  schema
 });
+server.applyMiddleware({ app });
 
-const port = 3333;
-app.listen(port, err => {
-  if (err) {
-    console.error(err);
-  }
-  console.log(`Listening at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`);
 });
