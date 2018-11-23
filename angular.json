@@ -84,6 +84,7 @@
               "apps/client/src/assets"
             ],
             "styles": [
+              "node_modules/typeface-ibm-plex-sans/index.css",
               "apps/client/src/styles.scss"
             ],
             "scripts": []
