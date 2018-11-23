@@ -1,0 +1,6 @@
+{
+  "/graphql": {
+    "target": "http://api:3333",
+    "secure": false
+  }
+}

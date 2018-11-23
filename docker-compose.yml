@@ -1,0 +1,30 @@
+version: '3.5'
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    image: docker-fs-gql-front:latest
+    container_name: front
+    ports:
+      - '4333:80'
+    networks:
+      - docker-fs-gql-net
+    depends_on:
+      - api
+
+  api:
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    image: docker-fs-gql-api:latest
+    container_name: api
+    ports:
+      - '3333:3333'
+    networks:
+      - docker-fs-gql-net
+
+networks:
+  docker-fs-gql-net:
+    driver: bridge
