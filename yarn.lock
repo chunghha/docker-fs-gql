@@ -1047,6 +1047,13 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
+angular-animations@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/angular-animations/-/angular-animations-0.0.5.tgz#1c1f800ba570ad681644c7e7257daf983a0c1539"
+  integrity sha512-GYSZpXMgmf7IBAABQeDXN7F5wwJ012CCawSMjGHpKDYfIDCdo78DN1MI415RVsZCs11Le1+5+o2YypdyNWgysw==
+  dependencies:
+    tslib "^1.9.0"
+
 ansi-align@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-2.0.0.tgz#c36aeccba563b89ceb556f3690f0b1d9e3547f7f"
