@@ -4,8 +4,6 @@
 <div *ngIf="!!response && !!response.countries && response.countries.length"
   [@rubberBandOnEnter] [@fadeOutOnLeave]>
 
-  <h3>Countries</h3>
-
   <mat-form-field floatLabel="never">
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
