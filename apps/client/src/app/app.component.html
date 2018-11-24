@@ -2,7 +2,7 @@
   Loading...
 </div>
 <div *ngIf="!!response && !!response.countries && response.countries.length"
-  [@rubberBandOnEnter] [@fadeOutOnLeave]>
+  [@fadeInUpBigOnEnter] [@fadeOutOnLeave]>
 
   <mat-form-field floatLabel="never">
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">

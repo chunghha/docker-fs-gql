@@ -1,7 +1,7 @@
 import { AfterViewChecked, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { rubberBandOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
+import { fadeInUpBigOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { untilDestroyed } from 'ngx-take-until-destroy';
@@ -20,7 +20,7 @@ interface Response {
 
 @Component({
   animations: [
-    rubberBandOnEnterAnimation(),
+    fadeInUpBigOnEnterAnimation(),
     fadeOutOnLeaveAnimation()
   ],
   selector: 'docker-fs-gql-root',
