@@ -1,50 +1,69 @@
-<div *ngIf="loading">
-  Loading...
-</div>
-<div *ngIf="!!response && !!response.countries && response.countries.length"
-  [@fadeInUpBigOnEnter] [@fadeOutOnLeave]>
-
+<div *ngIf="loading">Loading...</div>
+<div
+  *ngIf="!!response && !!response.countries && response.countries.length"
+  [@fadeInUpBigOnEnter]
+  [@fadeOutOnLeave]
+>
   <mat-form-field floatLabel="never">
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    <input
+      matInput
+      (keyup)="applyFilter($event.target.value)"
+      placeholder="Filter"
+    />
   </mat-form-field>
 
   <div class="example-container mat-elevation-z2">
     <mat-table #table [dataSource]="dataSource" matSort>
-
       <!-- Name Column -->
       <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Name
+        </mat-header-cell>
         <mat-cell *matCellDef="let country">
-          <img class="flag" aria-hidden [src]="country.flag">
+          <img class="flag" aria-hidden [src]="country.flag" />
           {{ country.name }}
         </mat-cell>
       </ng-container>
 
       <!-- Capital Column -->
       <ng-container matColumnDef="capital">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Capital </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Capital
+        </mat-header-cell>
         <mat-cell *matCellDef="let country"> {{ country.capital }} </mat-cell>
       </ng-container>
 
       <!-- Subregion Column -->
       <ng-container matColumnDef="subregion">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Subregion </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Subregion
+        </mat-header-cell>
         <mat-cell *matCellDef="let country"> {{ country.subregion }} </mat-cell>
       </ng-container>
 
       <!-- Population Column -->
       <ng-container matColumnDef="population">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Population </mat-header-cell>
-        <mat-cell *matCellDef="let country"> {{ country.population | number }} </mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Population
+        </mat-header-cell>
+        <mat-cell *matCellDef="let country">
+          {{ country.population | number }}
+        </mat-cell>
       </ng-container>
 
-
-      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-header-row
+        *matHeaderRowDef="displayedColumns; sticky: true"
+      ></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
   </div>
 
-  <mat-paginator #paginator [length]="length" [pageSize]="10"
-    [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons>
+  <mat-paginator
+    #paginator
+    [length]="length"
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 20, 50, 100]"
+    showFirstLastButtons
+  >
   </mat-paginator>
 </div>

@@ -1,23 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 @import '~@angular/material/theming';
 
 $custom-typography: mat-typography-config(
-  $font-family:   'IBM Plex Sans',
-  $display-4:     mat-typography-level(112px, 112px, 300),
-  $display-3:     mat-typography-level(56px, 56px, 400),
-  $display-2:     mat-typography-level(45px, 48px, 400),
-  $display-1:     mat-typography-level(34px, 40px, 400),
-  $headline:      mat-typography-level(24px, 32px, 700),
-  $title:         mat-typography-level(20px, 32px, 500),
-  $subheading-2:  mat-typography-level(16px, 24px, 400),
-  $subheading-1:  mat-typography-level(14px, 20px, 400),
-  $body-2:        mat-typography-level(16px, 24px, 500),
-  $body-1:        mat-typography-level(16px, 20px, 400),
-  $caption:       mat-typography-level(14px, 20px, 400),
-  $button:        mat-typography-level(16px, 14px, 500),
-  $input:         mat-typography-level(16px, 1.125, 400)
+  $font-family: 'IBM Plex Sans',
+  $display-4: mat-typography-level(112px, 112px, 300),
+  $display-3: mat-typography-level(56px, 56px, 400),
+  $display-2: mat-typography-level(45px, 48px, 400),
+  $display-1: mat-typography-level(34px, 40px, 400),
+  $headline: mat-typography-level(24px, 32px, 700),
+  $title: mat-typography-level(20px, 32px, 500),
+  $subheading-2: mat-typography-level(16px, 24px, 400),
+  $subheading-1: mat-typography-level(14px, 20px, 400),
+  $body-2: mat-typography-level(16px, 24px, 500),
+  $body-1: mat-typography-level(16px, 20px, 400),
+  $caption: mat-typography-level(14px, 20px, 400),
+  $button: mat-typography-level(16px, 14px, 500),
+  $input: mat-typography-level(16px, 1.125, 400)
 );
 
 @include angular-material-typography($custom-typography);

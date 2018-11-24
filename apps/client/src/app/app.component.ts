@@ -1,7 +1,16 @@
-import { AfterViewChecked, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewChecked,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { fadeInUpBigOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
+import {
+  fadeInUpBigOnEnterAnimation,
+  fadeOutOnLeaveAnimation
+} from 'angular-animations';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { untilDestroyed } from 'ngx-take-until-destroy';
@@ -15,20 +24,16 @@ interface Country {
 }
 
 interface Response {
-  countries: Country[]
+  countries: Country[];
 }
 
 @Component({
-  animations: [
-    fadeInUpBigOnEnterAnimation(),
-    fadeOutOnLeaveAnimation()
-  ],
+  animations: [fadeInUpBigOnEnterAnimation(), fadeOutOnLeaveAnimation()],
   selector: 'docker-fs-gql-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewChecked, OnDestroy, OnInit {
-
   response: Response;
   loading = true;
 
@@ -39,7 +44,7 @@ export class AppComponent implements AfterViewChecked, OnDestroy, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo) {}
 
   ngOnInit() {
     this.apollo
@@ -55,11 +60,14 @@ export class AppComponent implements AfterViewChecked, OnDestroy, OnInit {
               timezones
             }
           }
-        `,
+        `
       })
-      .valueChanges.pipe(untilDestroyed(this)).subscribe(res => {
+      .valueChanges.pipe(untilDestroyed(this))
+      .subscribe(res => {
         this.response = <Response>res.data;
-        this.dataSource = new MatTableDataSource<Country>(this.response.countries);
+        this.dataSource = new MatTableDataSource<Country>(
+          this.response.countries
+        );
         this.length = this.response.countries.length;
         this.loading = false;
       });
