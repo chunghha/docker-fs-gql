@@ -1,6 +1,6 @@
 import { AfterViewChecked, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { untilDestroyed } from 'ngx-take-until-destroy';
@@ -27,11 +27,12 @@ export class AppComponent implements AfterViewChecked, OnDestroy, OnInit {
   response: Response;
   loading = true;
 
-  displayedColumns = ['name', 'capital', 'subregion'];
+  displayedColumns = ['name', 'capital', 'subregion', 'population'];
   dataSource: MatTableDataSource<Country>;
   length = 0;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private apollo: Apollo) { }
 
@@ -44,6 +45,7 @@ export class AppComponent implements AfterViewChecked, OnDestroy, OnInit {
               name
               capital
               flag
+              population
               subregion
               timezones
             }
@@ -61,6 +63,7 @@ export class AppComponent implements AfterViewChecked, OnDestroy, OnInit {
   ngAfterViewChecked() {
     if (this.dataSource && this.dataSource.paginator === undefined) {
       this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     }
   }
 
