@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import {
+  MatBadgeModule,
   MatInputModule,
   MatPaginatorModule,
   MatSortModule,
@@ -22,9 +24,11 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CommonModule,
     HttpClientModule,
     ApolloModule,
     HttpLinkModule,
+    MatBadgeModule,
     MatInputModule,
     MatPaginatorModule,
     MatSortModule,

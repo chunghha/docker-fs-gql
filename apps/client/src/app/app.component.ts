@@ -15,10 +15,15 @@ import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 
+import { CountryService } from './country.service';
+
 interface Country {
   name: string;
   capital?: string;
+  cioc?: string;
   flag?: string;
+  isG7: boolean;
+  isG20: boolean;
   subregion?: string;
   timezones?: string[];
 }
@@ -37,14 +42,14 @@ export class AppComponent implements AfterViewChecked, OnDestroy, OnInit {
   response: Response;
   loading = true;
 
-  displayedColumns = ['name', 'capital', 'subregion', 'population'];
+  displayedColumns = ['name', 'capital', 'subregion', 'population', 'cioc'];
   dataSource: MatTableDataSource<Country>;
   length = 0;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo, private countryService: CountryService) {}
 
   ngOnInit() {
     this.apollo
@@ -54,6 +59,7 @@ export class AppComponent implements AfterViewChecked, OnDestroy, OnInit {
             countries {
               name
               capital
+              cioc
               flag
               population
               subregion
@@ -68,6 +74,7 @@ export class AppComponent implements AfterViewChecked, OnDestroy, OnInit {
         this.dataSource = new MatTableDataSource<Country>(
           this.response.countries
         );
+        this.setG7and20(this.dataSource);
         this.length = this.response.countries.length;
         this.loading = false;
       });
@@ -84,5 +91,12 @@ export class AppComponent implements AfterViewChecked, OnDestroy, OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  private setG7and20(dataSource: MatTableDataSource<Country>) {
+    dataSource.data.forEach(country => {
+      country.isG7 = this.countryService.isG7(country.cioc);
+      country.isG20 = this.countryService.isG20(country.cioc);
+    });
   }
 }

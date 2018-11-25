@@ -23,3 +23,8 @@
 .mat-table {
   background: #f4f4f4;
 }
+
+.mat-column-name {
+  flex: 0 0 30% !important;
+  min-width: 120px !important;
+}

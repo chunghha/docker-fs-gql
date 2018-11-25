@@ -21,7 +21,23 @@
         </mat-header-cell>
         <mat-cell *matCellDef="let country">
           <img class="flag" aria-hidden [src]="country.flag" />
-          {{ country.name }}
+          <span
+            *ngIf="country.isG7"
+            matBadge="G7"
+            matBadgeColor="accent"
+            matBadgeOverlap="false"
+            >{{ country.name }}</span
+          >
+          <span
+            *ngIf="!country.isG7 && country.isG20"
+            matBadge="20"
+            matBadgeColor="primary"
+            matBadgeOverlap="false"
+            >{{ country.name }}</span
+          >
+          <span *ngIf="!country.isG7 && !country.isG20">{{
+            country.name
+          }}</span>
         </mat-cell>
       </ng-container>
 
@@ -49,6 +65,13 @@
         <mat-cell *matCellDef="let country">
           {{ country.population | number }}
         </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="cioc">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          CIOC
+        </mat-header-cell>
+        <mat-cell *matCellDef="let country"> {{ country.cioc }} </mat-cell>
       </ng-container>
 
       <mat-header-row
