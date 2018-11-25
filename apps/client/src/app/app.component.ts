@@ -11,8 +11,7 @@ import {
   fadeInUpBigOnEnterAnimation,
   fadeOutOnLeaveAnimation
 } from 'angular-animations';
-import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
+
 import { untilDestroyed } from 'ngx-take-until-destroy';
 
 import { CountryService } from './country.service';
@@ -49,25 +48,11 @@ export class AppComponent implements AfterViewChecked, OnDestroy, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private apollo: Apollo, private countryService: CountryService) {}
+  constructor(private countryService: CountryService) {}
 
   ngOnInit() {
-    this.apollo
-      .watchQuery({
-        query: gql`
-          {
-            countries {
-              name
-              capital
-              cioc
-              flag
-              population
-              subregion
-              timezones
-            }
-          }
-        `
-      })
+    this.countryService
+      .getQueryRef()
       .valueChanges.pipe(untilDestroyed(this))
       .subscribe(res => {
         this.response = <Response>res.data;

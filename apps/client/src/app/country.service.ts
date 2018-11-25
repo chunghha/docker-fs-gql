@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 
+import { Apollo, QueryRef } from 'apollo-angular';
+import { R } from 'apollo-angular/types';
+import gql from 'graphql-tag';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,7 +39,25 @@ export class CountryService {
     'USA'
   ];
 
-  constructor() {}
+  constructor(private apollo: Apollo) {}
+
+  getQueryRef(): QueryRef<{}, R> {
+    return this.apollo.watchQuery({
+      query: gql`
+        {
+          countries {
+            name
+            capital
+            cioc
+            flag
+            population
+            subregion
+            timezones
+          }
+        }
+      `
+    });
+  }
 
   isG7(cioc: string): boolean {
     return this.G7_MEMBERS.indexOf(cioc) > -1 ? true : false;
