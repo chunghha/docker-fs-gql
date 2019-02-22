@@ -1,14 +1,17 @@
-FROM node:10-alpine as builder
+ARG NGINX_VERSION=1.15
+ARG NODE_VERSION=10
+
+FROM node:${NODE_VERSION}-alpine as builder
 
 WORKDIR /app
 RUN npm -g i yarn
 COPY . .
-COPY proxy.conf.docker.json proxy.conf.json
 RUN yarn
-
 RUN yarn build client
 
-FROM nginx:1.15-alpine
+COPY proxy.conf.docker.json proxy.conf.json
+
+FROM nginx:${NGINX_VERSION}-alpine
 
 COPY /nginx/default.conf /etc/nginx/conf.d/
 RUN rm -rf /usr/share/nginx/html/*

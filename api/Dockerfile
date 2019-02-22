@@ -1,10 +1,11 @@
-FROM node:10-alpine as builder
+ARG NODE_VERSION=10
+
+FROM node:${NODE_VERSION}-alpine as builder
 
 WORKDIR /app
 RUN npm -g i yarn
 COPY . .
 RUN yarn
-
 RUN yarn build server
 
 EXPOSE 3333
