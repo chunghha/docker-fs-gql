@@ -6,11 +6,16 @@ import {
   ViewChild
 } from '@angular/core';
 
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+
+/**
 import {
   fadeInUpBigOnEnterAnimation,
   fadeOutOnLeaveAnimation
 } from 'angular-animations';
+*/
 
 import { untilDestroyed } from 'ngx-take-until-destroy';
 
@@ -32,7 +37,7 @@ interface Response {
 }
 
 @Component({
-  animations: [fadeInUpBigOnEnterAnimation(), fadeOutOnLeaveAnimation()],
+  // animations: [fadeInUpBigOnEnterAnimation(), fadeOutOnLeaveAnimation()],
   selector: 'docker-fs-gql-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -45,8 +50,8 @@ export class AppComponent implements AfterViewChecked, OnDestroy, OnInit {
   dataSource: MatTableDataSource<Country>;
   length = 0;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(private countryService: CountryService) {}
 
