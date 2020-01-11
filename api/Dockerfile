@@ -3,7 +3,7 @@ ARG NODE_VERSION=12
 FROM node:${NODE_VERSION}-alpine as builder
 
 WORKDIR /app
-RUN npm -g i yarn
+RUN npm -g i yarn --force
 COPY . .
 RUN yarn
 RUN yarn build server
