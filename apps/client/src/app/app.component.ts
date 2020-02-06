@@ -10,13 +10,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-/**
-import {
-  fadeInUpBigOnEnterAnimation,
-  fadeOutOnLeaveAnimation
-} from 'angular-animations';
-*/
-
 import { untilDestroyed } from 'ngx-take-until-destroy';
 
 import { CountryService } from './country.service';
@@ -50,8 +43,8 @@ export class AppComponent implements AfterViewChecked, OnDestroy, OnInit {
   dataSource: MatTableDataSource<Country>;
   length = 0;
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private countryService: CountryService) {}
 
