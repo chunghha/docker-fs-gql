@@ -15,9 +15,8 @@
  */
 
 /***************************************************************************************************
-* BROWSER POLYFILLS
-*/
-
+ * BROWSER POLYFILLS
+ */
 
 /**
  * If the application will be indexed by Google Search, the following is required.

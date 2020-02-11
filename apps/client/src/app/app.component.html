@@ -1,7 +1,5 @@
 <div *ngIf="loading">Loading...</div>
-<div
-  *ngIf="!!response && !!response.countries && response.countries.length"
->
+<div *ngIf="!!response && !!response.countries && response.countries.length">
   <mat-form-field floatLabel="never">
     <input
       matInput
