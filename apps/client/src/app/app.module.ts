@@ -16,6 +16,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { NxModule } from '@nrwl/angular';
 
 import { AppComponent } from './app.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +34,8 @@ import { AppComponent } from './app.component';
     MatSortModule,
     MatTableModule,
     NxModule.forRoot(),
-    RouterModule.forRoot([], { initialNavigation: 'enabled' })
+    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {
