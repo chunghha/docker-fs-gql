@@ -17,5 +17,8 @@
     "client-e2e": {
       "tags": []
     }
+  },
+  "affected": {
+    "defaultBase": "master"
   }
 }
