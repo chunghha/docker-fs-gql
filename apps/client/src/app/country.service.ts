@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { Apollo, QueryRef } from 'apollo-angular';
-import { R } from 'apollo-angular/types';
 import gql from 'graphql-tag';
 
 @Injectable({
@@ -41,7 +40,7 @@ export class CountryService {
 
   constructor(private apollo: Apollo) {}
 
-  getQueryRef(): QueryRef<{}, R> {
+  getQueryRef(): QueryRef<{}, undefined> {
     return this.apollo.watchQuery({
       query: gql`
         {

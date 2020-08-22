@@ -4,20 +4,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
-import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
 import { NxModule } from '@nrwl/angular';
 
-import { AppComponent } from './app.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AppComponent } from './app.component';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,9 +23,8 @@ import { environment } from '../environments/environment';
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
+    GraphQLModule,
     HttpClientModule,
-    ApolloModule,
-    HttpLinkModule,
     MatBadgeModule,
     MatInputModule,
     MatPaginatorModule,
@@ -36,20 +33,6 @@ import { environment } from '../environments/environment';
     NxModule.forRoot(),
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
-  ],
-  providers: [
-    {
-      provide: APOLLO_OPTIONS,
-      useFactory(httpLink: HttpLink) {
-        return {
-          cache: new InMemoryCache(),
-          link: httpLink.create({
-            uri: '/graphql'
-          })
-        };
-      },
-      deps: [HttpLink]
-    }
   ],
   bootstrap: [AppComponent]
 })
