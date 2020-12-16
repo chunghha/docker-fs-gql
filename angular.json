@@ -16,7 +16,9 @@
             "outputPath": "dist/apps/server",
             "main": "apps/server/src/main.ts",
             "tsConfig": "apps/server/tsconfig.app.json",
-            "assets": ["apps/server/src/assets"]
+            "assets": [
+              "apps/server/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -29,7 +31,10 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "serve": {
           "builder": "@nrwl/node:execute",
@@ -44,7 +49,9 @@
               "apps/server/tsconfig.app.json",
               "apps/server/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -52,7 +59,10 @@
           "options": {
             "jestConfig": "apps/server/jest.config.js",
             "tsConfig": "apps/server/tsconfig.spec.json"
-          }
+          },
+          "outputs": [
+            "coverage/apps/server"
+          ]
         }
       }
     },
@@ -98,7 +108,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -118,7 +127,10 @@
               "serviceWorker": true,
               "ngswConfigPath": "apps/client/ngsw-config.json"
             }
-          }
+          },
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -146,7 +158,9 @@
               "apps/client/tsconfig.app.json",
               "apps/client/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -155,7 +169,10 @@
             "jestConfig": "apps/client/jest.config.js",
             "tsConfig": "apps/client/tsconfig.spec.json",
             "setupFile": "apps/client/src/test-setup.ts"
-          }
+          },
+          "outputs": [
+            "coverage/apps/client/"
+          ]
         }
       }
     },
@@ -181,7 +198,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/client-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }

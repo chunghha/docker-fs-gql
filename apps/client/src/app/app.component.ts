@@ -3,6 +3,7 @@ import {
   Component,
   OnDestroy,
   OnInit,
+  VERSION,
   ViewChild
 } from '@angular/core';
 
@@ -10,10 +11,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
+import { Logger } from '@nsalaun/ng-logger';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 
 import { CountryService } from './country.service';
 
+const { version: appVersion } = require('../../../../package.json');
 interface Country {
   name: string;
   capital?: string;
@@ -46,9 +49,11 @@ export class AppComponent implements AfterViewChecked, OnDestroy, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private countryService: CountryService) {}
+  constructor(private logger: Logger, private countryService: CountryService) {}
 
   ngOnInit() {
+    this.logger.log(`App(NG) Version: ${appVersion}(${VERSION.full})`);
+
     this.countryService
       .getQueryRef()
       .valueChanges.pipe(untilDestroyed(this))

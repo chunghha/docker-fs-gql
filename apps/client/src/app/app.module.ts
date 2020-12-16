@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { Level, NgLoggerModule } from '@nsalaun/ng-logger';
 import { NxModule } from '@nrwl/angular';
 
 import { environment } from '../environments/environment';
@@ -30,6 +31,7 @@ import { GraphQLModule } from './graphql.module';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    NgLoggerModule.forRoot(Level.LOG),
     NxModule.forRoot(),
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })

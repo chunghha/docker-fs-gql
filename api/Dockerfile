@@ -1,4 +1,4 @@
-ARG NODE_VERSION=12
+ARG NODE_VERSION=14
 
 FROM node:${NODE_VERSION}-alpine as builder
 
