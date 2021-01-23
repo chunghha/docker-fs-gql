@@ -1,15 +1,14 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "module": "es2020",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es2015",
+    "module": "es2020",
     "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "esnext.asynciterable", "dom"],
+    "lib": ["es2018", "dom"],
     "baseUrl": ".",
     "paths": {
       "*": ["node_modules/*", "src/types/*"]
